@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualisation Project</title>
+    <script src='https://d3js.org/d3.v4.js' harset="utf-8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+		
+</head>
+<style>
+#bubbleChart{
+		font-family:arial;
+		font-size:13;
+		font-style:bold;
+		color:#004855;
+		
+}
+
+.tooltip{
+position: absolute;
+width: 120;
+height: auto;
+font-family: simsun;
+font-size: 14px;
+text-align: center;
+border-style: solid; 
+border-width: 1px;
+background-color: white;
+border-radius: 5px;
+}
+
+body {
+    background-color: white;
+    margin: 10 auto;
+  }
+
+h1{
+	font-family:helvetica,arial,sans-serif;
+	font-size:22;
+	font-style:bold;
+	color:#34495e;
+}
+
+h2{
+	font-family:helvetica,arial,sans-serif;
+	font-size:16;
+	font-style:bold;
+	color:#00A6AA;
+}
+
+h3{
+	font-family:arial;
+	font-size:13;
+	font-style:bold;
+	color:#004855;
+}
+
+
+#header{
+   background-size:cover;
+   background-attachment:fixed;
+	 background-color: rgba(255, 255, 255, 0.3);
+   background-image: url("true2.jpeg");
+}
+
+</style>
+<body>
+		<div id="container">
+			<div id="header">
+			<h1>Wildland Fire in New York State (NYS)</h1>
+			<button onclick="window.location.href = 'map.html';">General NYS information</button>
+			<button onclick="window.location.href = 'fire_location.html';">Fire location information</button>
+			<button onclick="window.location.href = 'causeTrend.html';">Wildland fire cause</button>
+			<button onclick="window.location.href = 'relationship.html';">Relationship content</button>
+			<h2>Detail information about three different factors (ownership, NFFL fuel model and fire report method)</h2>
+			<h3>Dataset contains all the wildland fire, NYS (2008 - 2018)</h3>
+			</div>
+			<div id="charts">
+				<div id="bubbleContainer">
+				<div id="overallRatings" class="btn-group btn-info top-btn" data-toggle="buttons">
+				  <label class="btn ratingBtn" id="Ownership">
+					<input type="radio" name="options">Ownership</label>
+				  <label class="btn ratingBtn" id="NFFL-Fuel-Model">
+					<input type="radio" name="options">NFFL fuel model</label>
+				  <label class="btn ratingBtn" id="Fire-Report-Method">
+					<input type="radio" name="options">Fire Report Method</label>
+				
+				<div name = "mydiv" id="mydiv" style="position:absolute;left:975px;top:240px;font-size:15px;
+				font-weight:400;font-family:Palatino Linotype,Book Antiqua,Palatino, serif;color:#00A6AA">
+								This plot shows the wildland fire under three different scenarios</div>
+
+				<div name = "mydiv" id="mydiv" style="position:absolute;left:975px;top:270px;font-size:15px;
+                      font-weight:400;font-family:Palatino Linotype,Book Antiqua,Palatino, serif;color:#004855">
+						You can click selection point on the top, choose the scenario you want to explore. The 
+						default state is Ownership.</br>
+						When you click the circle, you can see the pie chart describing number of fire with the cause. </br>
+
+				</div>
+				<div name = "mydiv" id="mydiv" style="position:absolute;left:975px;top:350px;font-size:15px;
+						font-weight:400;font-family:Palatino Linotype,Book Antiqua,Palatino, serif;color:#00A6AA">
+									Interesting findings</div>
+
+					<div name = "mydiv" id="mydiv" style="position:absolute;left:975px;top:370px;font-size:15px;
+                      font-weight:400;font-family:Palatino Linotype,Book Antiqua,Palatino, serif;color:#004855">
+								As we explore in the third page. In most of the scenarios, campfire, debris burning, incendiary
+								has the highest happen frequency</br></div>
+
+						<div name = "mydiv" id="mydiv" style="position:absolute;left:975px;top:420px;font-size:15px;
+								font-weight:400;font-family:Palatino Linotype,Book Antiqua,Palatino, serif;color:#00A6AA">
+												special situation</div>
+
+							<div name = "mydiv" id="mydiv" style="position:absolute;left:975px;top:440px;font-size:15px;
+												font-weight:400;font-family:Palatino Linotype,Book Antiqua,Palatino, serif;color:#004855">
+								 However, there are some situation are very special.</br>
+								 When you choose Ownership, and click the other goverment. In this situation, 
+								 prescribed fire cause 52 fire accidents.
+								 Also, when you click wildlife management area, the prescribed fire cause 31 fire accidents.
+								 For state forest/RF area, prescribed fire cause 36 fire accidents.</br></br>
+
+								 This is very interesing, because at these area, goverment and forest areas protection personnel
+								 will set fire according to regulations which can better protect the wildland ecosystem. This can explain 
+								 why these area has different cause compare with other scenarios.
+				</div>
+
+				<div name = "mydiv" id="mydiv" style="position:absolute;left:70px;top:620px;font-size:15px;
+				font-weight:400;font-family:Palatino Linotype,Book Antiqua,Palatino, serif;color:#00A6AA">
+								The color shows the aveage damage range.</br> The darker the color, the higher the damage range</div>
+
+
+				<div id="bubbleChart"></div>
+						<script src="relationship.js"></script>	
+				
+						
+				</div>
+		</div>
+</body>
+
+</html>
